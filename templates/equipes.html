@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Equipes</h1>
+        <nav>
+            <a href="/">Voltar ao Início</a>
+            <a href="/equipes/novo">Adicionar Nova Equipe</a>
+            <a href="/partidas">Gerenciar Partidas</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Lista de Equipes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Reoresentante</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for equipe in equipes %}
+                    <tr>
+                        <td>{{ equipe.id }}</td>
+                        <td>{{ equipe.nome }}</td>
+                        <td>{{ equipe.representante }}</td>
+                        <td>
+                            <button><a href="/equipes/editar/{{ equipe.id }}">Editar</a><button>
+                            <a href="/equipes/remover/{{ equipe.id }}" onclick="return confirm('Tem certeza que deseja remover esta equipe?');">Remover</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">Nenhuma equipe encontrada.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 II Taça CZ Volei. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

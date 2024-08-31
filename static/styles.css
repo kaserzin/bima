@@ -1,0 +1,95 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+}
+
+header{
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+header h1, main h2 {
+    margin: 0;
+}
+
+header nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+td button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.4rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: auto;
+    font-weight: bold;
+}
+
+form input, form button {
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+form input {
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
