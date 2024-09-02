@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Equipes nas Chaves</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Gerenciar Equipes na Chave</h1>
+    <h2>Chave ID: {{ chave_id }}</h2>
+    
+    <form method="POST">
+        <label for="equipe_id">Adicionar Equipe:</label>
+        <select name="equipe_id" id="equipe_id">
+            {% for equipe in equipes_disponiveis %}
+            <option value="{{ equipe.id }}">{{ equipe.nome }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h3>Equipes na Chave:</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for equipe in equipes %}
+            <tr>
+                <td>{{ equipe.id }}</td>
+                <td>{{ equipe.nome }}</td>
+                <td>
+                    <a href="/chaves/{{ chave_id }}/equipes/remover/{{ equipe.id }}">Remover</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/chaves">Voltar para Chaves</a>
+</body>
+</html>

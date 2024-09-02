@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaves</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Chaves</h1>
+    <a href="/chaves/novo">Nova Chave</a>
+    <table border="1">
+        <tr>
+            <th>ID da Chave</th>
+            <th>Nome da Chave</th>
+            <th>Equipes</th>
+            <th>Ações</th>
+        </tr>
+        {% for chave in chaves %}
+        <tr>
+            <td>{{ chave.id }}</td>
+            <td>{{ chave.nome }}</td>
+            <td>
+                <ul>
+                    {% for equipe in chave.equipes %}
+                    <li>{{ equipe.nome }} <a href="/chaves/{{ chave.id }}/remover_equipe/{{ equipe.id }}">Remover</a></li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>
+                <a href="/chaves/{{ chave.id }}/editar">Editar</a> |
+                <a href="/chaves/{{ chave.id }}/remover">Remover</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

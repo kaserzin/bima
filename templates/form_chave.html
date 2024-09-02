@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <form method="POST">
+        <div>
+            <label for="nome">Nome da Chave:</label>
+            <input type="text" name="nome" id="nome" required>
+        </div>
+        
+        <div>
+            <h2>Equipes</h2>
+            {% for equipe in equipes %}
+                <div>
+                    <input type="checkbox" name="equipes" value="{{ equipe.id }}" id="equipe_{{ equipe.id }}">
+                    <label for="equipe_{{ equipe.id }}">{{ equipe.nome }}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>
