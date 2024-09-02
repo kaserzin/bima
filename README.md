@@ -5,6 +5,7 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 ## Funcionalidades
 
 - **Gerenciamento de Equipes**: Adicionar, editar e visualizar equipes.
+- **Gerenciamento de Partidas**: Adicionar, editar e visualizar partidas.
 - **Gerenciamento de Chaves**: Adicionar e remover equipes de chaves, visualizando as chaves e suas respectivas equipes.
 - **Interface Intuitiva**: Utiliza templates HTML para uma navegação fácil e rápida.
 
@@ -15,3 +16,20 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 - **Templates**: Arquivos HTML para a interface do usuário.
 - **Static**: Arquivos estáticos como CSS e imagens.
 
+## Fluxograma
+
+O fluxograma abaixo ilustra a arquitetura e o fluxo de dados do sistema:
+
+![Fluxograma](fluxograma.jpeg)
+
+## Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests para melhorar o sistema.
+
+## Licença
+
+Este projeto está licenciado sob a MIT License. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## Contato
+
+Se tiver dúvidas ou precisar de suporte, entre em contato pelo e-mail: seu-email@exemplo.com.
