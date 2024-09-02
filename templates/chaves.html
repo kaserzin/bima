@@ -7,32 +7,52 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Chaves</h1>
-    <a href="/chaves/novo">Nova Chave</a>
-    <table border="1">
-        <tr>
-            <th>ID da Chave</th>
-            <th>Nome da Chave</th>
-            <th>Equipes</th>
-            <th>Ações</th>
-        </tr>
-        {% for chave in chaves %}
-        <tr>
-            <td>{{ chave.id }}</td>
-            <td>{{ chave.nome }}</td>
-            <td>
-                <ul>
-                    {% for equipe in chave.equipes %}
-                    <li>{{ equipe.nome }} <a href="/chaves/{{ chave.id }}/remover_equipe/{{ equipe.id }}">Remover</a></li>
-                    {% endfor %}
-                </ul>
-            </td>
-            <td>
-                <a href="/chaves/{{ chave.id }}/editar">Editar</a> |
-                <a href="/chaves/{{ chave.id }}/remover">Remover</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
+    <header>
+        <h1>Chaves</h1>
+        <nav>
+            <a href="/">Voltar ao Início</a>
+            <a href="/chaves/novo">Criar Nova Chave</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Lista de Chaves</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID da Chave</th>
+                    <th>Nome da Chave</th>
+                    <th>Equipes</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for chave in chaves %}
+                <tr>
+                    <td>{{ chave.id }}</td>
+                    <td>{{ chave.nome }}</td>
+                    <td>
+                        {% if chave.equipes %}
+                            {% for equipe in chave.equipes %}
+                                {{ equipe.nome }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            Nenhuma equipe
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('editar_chave', id=chave.id) }}">Editar</a>
+                        <a href="/chaves/remover/{{ chave.id }}" onclick="return confirm('Tem certeza que deseja remover esta chave?');">Remover</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2024 II Taça CZ Volei. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

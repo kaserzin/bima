@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <title>Editar Chave - {{ title }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>{{ title }}</h1>
+    <h1>Editar Chave</h1>
+    
     <form method="POST" action="{{ url_for('editar_chave', id=chave['id']) }}">
         <label for="nome_chave">Nome da Chave:</label>
         <input type="text" id="nome_chave" name="nome_chave" value="{{ chave['nome'] }}" required>
-        
+
         <label for="id_chave">ID da Chave:</label>
         <input type="text" id="id_chave" name="id_chave" value="{{ chave['id'] }}" readonly>
 
@@ -31,7 +32,7 @@
         {% if equipes_disponiveis %}
             {% for equipe in equipes_disponiveis %}
                 <div>
-                    <input type="checkbox" id="adicionar_equipe{{ equipe.id }}" name="equipes" value="{{ equipe.id }}">
+                    <input type="checkbox" id="adicionar_equipe{{ equipe.id }}" name="equipes_adicionar" value="{{ equipe.id }}">
                     <label for="adicionar_equipe{{ equipe.id }}">{{ equipe.nome }}</label>
                 </div>
             {% endfor %}
