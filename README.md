@@ -20,7 +20,7 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 
 O fluxograma abaixo ilustra a arquitetura e o fluxo de dados do sistema:
 
-![Fluxograma](fluxograma.jpeg)
+![Fluxograma](static/fluxograma.jpeg)
 
 ## Contribuições
 
