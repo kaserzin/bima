@@ -1,4 +1,4 @@
-T# Sistema de Gestão de Competição de Voleibol
+# Sistema de Gestão de Competição de Voleibol
 
 Este projeto é um sistema de gestão de competições de voleibol desenvolvido com Flask. O sistema permite o gerenciamento de equipes e chaves, oferecendo uma interface para adicionar e editar essas entidades.
 
