@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Editar Chave</h1>
+    <h1>{{ title }}</h1>
     
     <form method="POST" action="{{ url_for('editar_chave', id=chave['id']) }}">
         <label for="nome_chave">Nome da Chave:</label>
@@ -20,8 +20,8 @@
         {% if equipes_na_chave %}
             {% for equipe in equipes_na_chave %}
                 <div>
-                    <input type="checkbox" id="remover_equipe{{ equipe.id }}" name="equipes_remover" value="{{ equipe.id }}">
-                    <label for="remover_equipe{{ equipe.id }}">{{ equipe.nome }}</label>
+                    <input type="checkbox" id="remover_equipe{{ equipe['id'] }}" name="equipes_remover" value="{{ equipe['id'] }}">
+                    <label for="remover_equipe{{ equipe['id'] }}">{{ equipe['nome'] }}</label>
                 </div>
             {% endfor %}
         {% else %}
@@ -32,8 +32,8 @@
         {% if equipes_disponiveis %}
             {% for equipe in equipes_disponiveis %}
                 <div>
-                    <input type="checkbox" id="adicionar_equipe{{ equipe.id }}" name="equipes_adicionar" value="{{ equipe.id }}">
-                    <label for="adicionar_equipe{{ equipe.id }}">{{ equipe.nome }}</label>
+                    <input type="checkbox" id="adicionar_equipe{{ equipe['id'] }}" name="equipes_adicionar" value="{{ equipe['id'] }}">
+                    <label for="adicionar_equipe{{ equipe['id'] }}">{{ equipe['nome'] }}</label>
                 </div>
             {% endfor %}
         {% else %}

@@ -33,7 +33,6 @@ def editar_equipe(id):
         return redirect('/')
     equipe = e.detalha_equipe(id)
     if equipe is None:
-        flash('Equipe não encontrada')
         return redirect('/')
     return render_template('form_equipe.html', equipe=equipe, title='Editar Equipe')
 
@@ -45,22 +44,27 @@ def listar_chaves():
         chave['equipes'] = Chave.listar_equipes_chave(chave['id'])
     return render_template('chaves.html', chaves=chaves)
 
-
 @app.route("/chaves/novo", methods=["GET", "POST"])
 def nova_chave():
     if request.method == "POST":
-        nome_chave = request.form['nome_chave']
+        nome_chave = request.form.get('nome_chave')
         equipes_selecionadas = request.form.getlist('equipes')
+
+        if not nome_chave:
+            return redirect(url_for('nova_chave'))
+
         nova_chave_id = Chave.nova_chave(nome_chave)
         
         for equipe_id in equipes_selecionadas:
             Chave.adicionar_equipe(nova_chave_id, equipe_id)
         
         return redirect(url_for('listar_chaves'))
+
     else:
         todas_equipes = Equipe.listar_equipe()
         equipes_disponiveis = [equipe for equipe in todas_equipes if Chave.equipes_disponiveis(equipe['id'])]
-        return render_template('form_chave.html', equipes=equipes_disponiveis)
+        return render_template('form_chave.html', title="Criar Nova Chave", equipes_disponiveis=equipes_disponiveis)
+
 
 
 
@@ -87,20 +91,35 @@ def remover_equipe_chave(id_chave, id_equipe):
 @app.route('/editar_chave/<int:id>', methods=['GET', 'POST'])
 def editar_chave(id):
     if request.method == 'POST':
-        pass
+        nome_chave = request.form.get('nome_chave')
+        equipes_remover = request.form.getlist('equipes_remover')
+        equipes_adicionar = request.form.getlist('equipes_adicionar')
+
+        if not nome_chave:
+            return redirect(url_for('editar_chave', id=id))
+
+        Chave.atualiza_chave(id, nome_chave)
+        
+        for equipe_id in equipes_remover:
+            Chave.remover_equipe(id, equipe_id)
+        
+        for equipe_id in equipes_adicionar:
+            Chave.adicionar_equipe(id, equipe_id)
+
+        return redirect(url_for('listar_chaves'))
+    
     else:
         chave = Chave.detalha_chave(id)
         equipes_na_chave = Chave.listar_equipes_chave(id)
         equipes_disponiveis = Chave.equipes_disponiveis()
 
         return render_template('editar_chave.html', title="Editar Chave", chave=chave, equipes_na_chave=equipes_na_chave, equipes_disponiveis=equipes_disponiveis)
-    
+   
 
 
 
 @app.route("/chaves/remover/<int:id>", methods=['GET'])
 def remover_chave(id):
-    chave = Chave.detalha_chave(id)
     Chave.remove_chave(id)
     return redirect('/chaves')
 

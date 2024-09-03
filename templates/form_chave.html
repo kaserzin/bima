@@ -8,15 +8,18 @@
 </head>
 <body>
     <h1>{{ title }}</h1>
-    <form method="POST" action="{{ url_for('editar_chave', id=chave['id']) }}">
+    
+    <form method="POST" action="{{ url_for('editar_chave', id=chave['id']) if chave else url_for('nova_chave') }}">
         <label for="nome_chave">Nome da Chave:</label>
-        <input type="text" id="nome_chave" name="nome_chave" value="{{ chave['nome'] }}" required>
+        <input type="text" id="nome_chave" name="nome_chave" value="{{ chave['nome'] if chave else '' }}" required>
         
-        <label for="id_chave">ID da Chave:</label>
-        <input type="text" id="id_chave" name="id_chave" value="{{ chave['id'] }}" readonly>
+        {% if chave %}
+            <label for="id_chave">ID da Chave:</label>
+            <input type="text" id="id_chave" name="id_chave" value="{{ chave['id'] }}" readonly>
+        {% endif %}
 
         <h3>Equipes na Chave</h3>
-        {% if equipes_na_chave %}
+        {% if chave and equipes_na_chave %}
             {% for equipe in equipes_na_chave %}
                 <div>
                     <input type="checkbox" id="remover_equipe{{ equipe.id }}" name="equipes_remover" value="{{ equipe.id }}">
@@ -39,8 +42,9 @@
             <p>Nenhuma equipe disponível para adicionar.</p>
         {% endif %}
 
-        <button type="submit">Salvar</button>
+        <button type="submit">{{ 'Salvar Alterações' if chave else 'Criar Chave' }}</button>
     </form>
     
 </body>
 </html>
+    

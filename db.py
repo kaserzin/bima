@@ -105,9 +105,9 @@ class Chave:
             VALUES (?);
         """, (nome,))
         conn.commit()
-        nova_chave_id = cursor.lastrowid  # Captura o ID da nova chave
+        nova_chave_id = cursor.lastrowid
         conn.close()
-        return nova_chave_id  # Retorna o ID da chave recém-criada
+        return nova_chave_id
 
     def listar_chaves():
         conn = sqlite3.connect('II_Taca_CZ_Volei.db')
@@ -145,19 +145,19 @@ class Chave:
     def detalha_chave(id_chave):
         conn = sqlite3.connect('II_Taca_CZ_Volei.db')
         cursor = conn.cursor()
-        values = cursor.execute("""
-            SELECT e.id, e.nome FROM chave_equipe ce
-            JOIN equipes e ON ce.id_equipe = e.id
-            WHERE ce.id_chave=?;
+        cursor.execute("""
+            SELECT nome FROM chaves WHERE id = ?;
         """, (id_chave,))
-        resultado = []
-        for row in values:
-            resultado.append({
-                'id': row[0],
-                'nome': row[1],
-            })
+        resultado = cursor.fetchone()
         conn.close()
-        return resultado
+        if resultado:
+            return {
+                'id': id_chave,
+                'nome': resultado[0]
+            }
+        else:
+            return None
+
     
     def listar_equipes_chave(id_chave):
         conn = sqlite3.connect('II_Taca_CZ_Volei.db')
