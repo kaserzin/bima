@@ -17,8 +17,17 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 ## Divisão dos arquivos
 - ┏ Static
 - ┣  - fluxograma.jpeg
-- ┗  - styles.css 
-- ┗ README.md
+- ┗  - styles.css
+- ┏ Template
+- ┣  - chaves.html
+- ┣  - editar_chave.html
+- ┣  - equipes.html
+- ┣  - equipes_chave.html
+- ┣  - form_chave.html
+- ┗  - form_equipe.html
+- ┏  README.md
+- ┣  app.py
+- ┗  db.py
 
 ## Fluxograma
 
