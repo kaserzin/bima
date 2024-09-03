@@ -1,4 +1,4 @@
-# Sistema de Gestão de Competição de Voleibol
+T# Sistema de Gestão de Competição de Voleibol
 
 Este projeto é um sistema de gestão de competições de voleibol desenvolvido com Flask. O sistema permite o gerenciamento de equipes e chaves, oferecendo uma interface para adicionar e editar essas entidades.
 
@@ -14,20 +14,25 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 - **Templates**: Arquivos HTML para a interface do usuário.
 - **Static**: Arquivos estáticos como CSS e imagens.
 
-## Divisão dos arquivos
-- ┏ Static
-- ┣  - fluxograma.jpeg
-- ┗  - styles.css
-- ┏ Template
-- ┣  - chaves.html
-- ┣  - editar_chave.html
-- ┣  - equipes.html
-- ┣  - equipes_chave.html
-- ┣  - form_chave.html
-- ┗  - form_equipe.html
-- ┏  README.md
-- ┣  app.py
-- ┗  db.py
+## Divisão dos Arquivos
+
+- ┏ **Static** -- Armazenando arquivos estáticos.
+  - ┣  - `fluxograma.jpeg` -- Imagem para melhor visualização de como funciona o fluxo de dados.
+  - ┗  - `styles.css` -- Folha de estilos para deixar o uso mais agradável.
+
+- ┏ **Template** -- Pasta utilizada para guardar os templates.
+  - ┣  - `chaves.html` -- Template para listar e gerenciar chaves.
+  - ┣  - `editar_chave.html` -- Formulário para editar as informações de uma chave existente.
+  - ┣  - `equipes.html` -- Template para listar e gerenciar equipes.
+  - ┣  - `equipes_chave.html` -- Template para gerenciar equipes associadas a uma chave.
+  - ┣  - `form_chave.html` -- Formulário para criar uma nova chave.
+  - ┗  - `form_equipe.html` -- Formulário para criar ou editar equipes.
+
+- ┏ **README.md** -- Documento que contém informações sobre o projeto, como instalação e uso.
+
+- ┏ **app.py** -- Arquivo principal da aplicação Flask, contendo as rotas e a lógica da aplicação.
+
+- ┗ **db.py** -- Módulo que gerencia a interação com o banco de dados, contendo funções para acessar e manipular os dados.
 
 ## Fluxograma
 
