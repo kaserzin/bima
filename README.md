@@ -14,6 +14,12 @@ Este projeto é um sistema de gestão de competições de voleibol desenvolvido 
 - **Templates**: Arquivos HTML para a interface do usuário.
 - **Static**: Arquivos estáticos como CSS e imagens.
 
+## Divisão dos arquivos
+- ┏ Static
+- ┣  - fluxograma.jpeg
+- ┗  - styles.css 
+- ┗ README.md
+
 ## Fluxograma
 
 O fluxograma abaixo ilustra a arquitetura e o fluxo de dados do sistema:
